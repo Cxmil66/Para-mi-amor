@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nosotros 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2.5rem;
+    }
+
+    .counter {
+      font-size: 2rem;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      position: relative;
+      animation: floatHearts 3s infinite ease-in-out;
+    }
+
+    @keyframes floatHearts {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05) rotate(-1deg); }
+      100% { transform: scale(1); }
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .romantic-phrase {
+      font-size: 1.6rem;
+      margin: 20px;
+      color: #fff3f3;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Corazones flotando */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: floatUp 4s linear infinite;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Desde que comenzó nuestra historia 💞</h1>
+
+  <p class="romantic-phrase">
+    Cada día contigo es un regalo que ilumina mi mundo. Tu sonrisa, tu voz, y cada momento a tu lado son tesoros que guardo en lo más profundo de mi corazón. Gracias por hacer mi vida mágica.
+  </p>
+
+  <div class="counter" id="liveCounter"></div>
+
+  <div class="gallery">
+    <img src="WhatsApp Image 2025-05-17 at 3.22.59 PM.jpeg" alt="Foto 1">
+    <img src="WhatsApp Image 2025-05-17 at 3.23.00 PM.jpeg" alt="Foto 2">
+    <img src="WhatsApp Image 2025-05-17 at 3.23.00 PM (1).jpeg" alt="Foto 3">
+    <img src="WhatsApp Image 2025-05-17 at 3.23.00 PM (3).jpeg" alt="Foto 4">
+  </div>
+
+  <footer>
+    Te amo con todo mi corazón 💖
+  </footer>
+
+  <script>
+    const startDate = new Date("2024-09-27T00:00:00");
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("liveCounter").innerHTML =
+        `${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
+
+    // Corazones flotando
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
+
+  <audio id="bg-music" autoplay loop controls style="margin-top: 20px;">
+    <source src="https://cdn.pixabay.com/audio/2024/02/26/audio_a7cfb2c62f.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+</body>
+</html>
+
